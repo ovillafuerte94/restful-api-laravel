@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\PetitionController;
 
 /*
@@ -20,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/petitions', PetitionController::class);
+Route::apiResource('/authors', AuthorController::class)->only([
+    'index', 'show'
+]);
