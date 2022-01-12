@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PetitionCollection;
+use App\Http\Resources\PetitionResource;
 use App\Models\Petition;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class PetitionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return PetitionCollection
      */
     public function index()
     {
@@ -22,11 +23,13 @@ class PetitionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return PetitionResource
      */
     public function store(Request $request)
     {
-        //
+        $petition = Petition::create($request->all());
+
+        return new PetitionResource($petition);
     }
 
     /**

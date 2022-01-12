@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Petition extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'title',
+        'description',
+        'category',
+        'author',
+        'signees'
+    ];
 }
